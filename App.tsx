@@ -1,3 +1,4 @@
+import { saveReportToDB } from './dbService';
 import React, { useState } from 'react';
 import { DailyReport } from './types';
 import { analyzeCashCloseImage, fileToBase64 } from './services/geminiService';
@@ -40,7 +41,9 @@ const App: React.FC = () => {
     }
   };
 
-  const handleSaveReport = (updatedReport: DailyReport) => {
+// 1. Agregamos "async" al principio de la función
+  const handleSaveReport = async (updatedReport: DailyReport) => { 
+    // 2. Primero actualizamos la pantalla (esto es lo que ya tenías)
     setReports(prev => {
         const exists = prev.find(r => r.id === updatedReport.id);
         if (exists) {
@@ -48,6 +51,16 @@ const App: React.FC = () => {
         }
         return [...prev, updatedReport];
     });
+
+    // 3. NUEVO: Enviamos el reporte a la base de datos de Neon
+    try {
+        await saveReportToDB(updatedReport);
+        console.log("Reporte guardado exitosamente en la nube");
+    } catch (err) {
+        console.error("Error al guardar en la base de datos:", err);
+    }
+
+    // 4. Cerramos el editor y volvemos al dashboard
     setEditingReport(null);
     setActiveTab('dashboard');
   };
