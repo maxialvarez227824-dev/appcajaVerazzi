@@ -1,39 +1,25 @@
-// Data structure for the extracted report
-export interface MoneyBreakdown {
+export interface DailyReport {
+  id: string;
+  date: string;
+  shiftNumber: string;
+  systemTotal: number;
+  systemBreakdown: {
     cash: number;
-    electronic: number; // Cards, QR, Transfers (Physical store)
-    deliveryApps: number; // Rappi, PedidosYa, etc.
-    currentAccount: number; // Ventas en cuenta corriente
+    electronic: number;
+    deliveryApps: number;
+    currentAccount: number;
     other: number;
-  }
-  
-  export interface DailyReport {
-    id: string;
-    date: string;
-    shiftNumber: string; // Numero de cierre
-    
-    // Predeterminada (System Data)
-    systemTotal: number;
-    systemBreakdown: MoneyBreakdown;
-  
-    // Arqueo Real (Physical Count)
-    realTotal: number;
-    realBreakdown: MoneyBreakdown;
-    
-    expenses: number; // Gastos pagados en el dia
-    
-    // Calculated
-    difference: number; // Real - System
-    status: 'BALANCED' | 'SHORTAGE' | 'SURPLUS' | 'REVIEW_REQUIRED';
-    
-    warnings: string[]; // List of validation issues
-    notes?: string;
-  }
-  
-  export interface DashboardMetrics {
-    totalSales: number;
-    totalCash: number;
-    totalElectronic: number;
-    totalExpenses: number;
-    netBalance: number;
-  }
+  };
+  realTotal: number;
+  realBreakdown: {
+    cash: number;
+    electronic: number;
+    deliveryApps: number;
+    currentAccount: number;
+    other: number;
+  };
+  expenses: number;
+  difference: number;
+  status: 'BALANCED' | 'SHORTAGE' | 'SURPLUS';
+  warnings: string[];
+}
