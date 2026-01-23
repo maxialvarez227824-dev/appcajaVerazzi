@@ -9,11 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "latest",
+    "next": "14.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "lucide-react": "^0.284.0",
     "@vercel/postgres": "latest",
+    "@google/generative-ai": "^0.1.0",
     "clsx": "latest",
     "tailwind-merge": "latest"
   },
