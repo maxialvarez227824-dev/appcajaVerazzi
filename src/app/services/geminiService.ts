@@ -2,8 +2,8 @@
 
 import { GoogleGenerativeAI } from "@google/generative-ai";
 // Los dos puntos indican que subimos a la carpeta 'app' para buscar 'types'
-import { DailyReport } from '../types';
-
+//import { DailyReport } from '../types';
+import { DailyReport } from '../types'; // LOS DOS PUNTOS SON VITALES
 // Cargamos la API Key desde las variables de entorno de Vercel
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || "";
 
