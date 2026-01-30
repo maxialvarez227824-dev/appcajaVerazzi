@@ -16,6 +16,7 @@ export interface DailyReport {
   realBreakdown: MoneyBreakdown;
   expenses: number;
   difference: number;
-  status: 'BALANCED' | 'SHORTAGE' | 'SURPLUS';
+  // Agregamos 'REVIEW_REQUIRED' aquí:
+  status: 'BALANCED' | 'SHORTAGE' | 'SURPLUS' | 'REVIEW_REQUIRED';
   warnings: string[];
 }
