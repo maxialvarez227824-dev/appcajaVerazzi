@@ -1,23 +1,19 @@
+export interface MoneyBreakdown {
+  cash: number;
+  electronic: number;
+  deliveryApps: number;
+  currentAccount: number;
+  other: number;
+}
+
 export interface DailyReport {
   id: string;
   date: string;
   shiftNumber: string;
   systemTotal: number;
-  systemBreakdown: {
-    cash: number;
-    electronic: number;
-    deliveryApps: number;
-    currentAccount: number;
-    other: number;
-  };
+  systemBreakdown: MoneyBreakdown;
   realTotal: number;
-  realBreakdown: {
-    cash: number;
-    electronic: number;
-    deliveryApps: number;
-    currentAccount: number;
-    other: number;
-  };
+  realBreakdown: MoneyBreakdown;
   expenses: number;
   difference: number;
   status: 'BALANCED' | 'SHORTAGE' | 'SURPLUS';
